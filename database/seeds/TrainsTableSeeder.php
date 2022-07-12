@@ -20,6 +20,14 @@ class TrainsTableSeeder extends Seeder
             $newTrain->stazione_di_arrivo= $faker->city();
             $newTrain->orario_di_partenza= $faker->time();
             $newTrain->orario_di_arrivo=  $faker->time();
+
+            $start_date = strtotime('1 january 2022');
+            $end_date = strtotime('31 december 2022');
+
+            $date = mt_rand($start_date, $end_date);
+
+            $newTrain->giorno_di_partenza = date('Y-m-d', $date);
+            $newTrain->giorno_di_arrivo = date('Y-m-d', $date);
             $newTrain->codice_treno= $faker->randomNumber(5, true);
             $newTrain->numero_carrozze= rand(1,30);
             $newTrain->save();
